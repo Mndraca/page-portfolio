@@ -32,9 +32,14 @@ const Contact: FC = () => {
 
   const validateFields = () => {
     const emptyFields: string[] = [];
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!formDataName) emptyFields.push("Name");
     if (!formDataEmail) emptyFields.push("Email");
+    else if (!emailRegex.test(formDataEmail))
+      emptyFields.push("Email (invalid format)");
     if (!formDataMessage) emptyFields.push("Message");
+
     return emptyFields;
   };
 
@@ -42,7 +47,11 @@ const Contact: FC = () => {
     event.preventDefault();
     const emptyFields = validateFields();
     if (emptyFields.length > 0) {
-      alert(`Please fill up empty fields: ${emptyFields.join(", ")}`);
+      alert(
+        `Please fill up empty fields or correct invalid fields: ${emptyFields.join(
+          ", "
+        )}`
+      );
       return;
     }
 
@@ -66,9 +75,12 @@ const Contact: FC = () => {
       if (response.ok) {
         setIsSubmitted(true);
         alert("Your form is submitted!");
+      } else {
+        alert("There was a problem with your submission.");
       }
     } catch (error) {
-      console.error("");
+      console.error("Submission error:", error);
+      alert("There was a problem with your submission.");
     }
   };
 
