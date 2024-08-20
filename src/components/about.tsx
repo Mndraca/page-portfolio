@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import "./layout.css";
-import Button from "./button";
 import VideoBG from "../assets/VideoBG.mp4";
 
 const About: FC = () => {

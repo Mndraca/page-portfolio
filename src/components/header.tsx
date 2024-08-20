@@ -1,5 +1,4 @@
-import { FC } from "react";
-import { useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Navlink from "./navlink";
 import MenuOverlay from "./menuoverlay";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
@@ -10,23 +9,17 @@ interface navLinkProps {
   path: string;
 }
 
-const navLinks: navLinkProps[] = [
-  {
-    title: "About",
-    path: "#about",
-  },
-  {
-    title: "Projects",
-    path: "#projects",
-  },
-  {
-    title: "Contact",
-    path: "#contact",
-  },
-];
-
 const Navbar: FC = () => {
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
+  const [navLinks, setNavLinks] = useState<navLinkProps[]>([
+    { title: "About", path: "#about" },
+    { title: "Projects", path: "#projects" },
+    { title: "Contact", path: "#contact" },
+    {
+      title: "Blog",
+      path: "https://dev.to/milena_komnenic_395b0feeb/what-is-the-purpose-of-the-eventpreventdefault-method-39j6",
+    }, // Static Blog link
+  ]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-30 bg-[#ffffff] bg-opacity-100 shadow-md">
