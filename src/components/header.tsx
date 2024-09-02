@@ -18,7 +18,7 @@ const Navbar: FC = () => {
     {
       title: "Blog",
       path: "https://dev.to/milena_komnenic_395b0feeb/what-is-the-purpose-of-the-eventpreventdefault-method-39j6",
-    }, // Static Blog link
+    },
   ]);
 
   return (

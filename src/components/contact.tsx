@@ -124,7 +124,12 @@ const Contact: FC = () => {
             <Resume />
           </div>
         </div>
-        {!isSubmitted && (
+        {isSubmitted ? (
+          <div className="text-center">
+            <h3 className="text-xl font-bold">Thank you for your message!</h3>
+            <p>I will get back to you shortly.</p>
+          </div>
+        ) : (
           <form onSubmit={handleSubmit}>
             <div id="contact">
               <Input
